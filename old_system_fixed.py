@@ -13,6 +13,7 @@ def run_system_monolith():
     fuel = 100
     consumption = 10
     
+    x = 10
     
     loading = 0
     while loading < 5:
@@ -77,11 +78,11 @@ def run_system_monolith():
             print("Invalid.")
             
         
-        x = 10
         if x > 5:
             print("System Check OK")
         else:
             print("System Failure")
+            break
             
        
         if len(n) > 0:
@@ -92,10 +93,10 @@ def run_system_monolith():
         
         fuel -= consumption
 
-        while fuel > 0:
-            
+        if fuel > 0:
             print("Idling...")
-            break 
+        else:
+            x = 0
             
         print("End of cycle.")
 

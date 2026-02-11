@@ -8,6 +8,10 @@ def run_system_monolith():
     print("BOOTING SYSTEM...")
     print("...")
     print("WELCOME TO FLEET COMMAND")
+
+   
+    fuel = 100
+    consumption = 10
     
     
     loading = 0
@@ -86,8 +90,8 @@ def run_system_monolith():
             print("Database empty.")
 
         
-        fuel = 100
-        consumption = 0
+        fuel -= consumption
+
         while fuel > 0:
             
             print("Idling...")

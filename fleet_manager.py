@@ -148,7 +148,26 @@ def display_menu():
     name = input("Enter your name: ")
     print("Current user:", name)
 
-    pass
+    print("""Enter a number to select function
+ 1 - Add crew member
+ 2 - Remove crew member
+ 3 - Update crew member's rank
+ 4 - Display crew
+ 5 - Search crew names
+ 6 - Filter crew by division
+ 7 - Calculate total crew payroll
+ 8 - Count number of officers""")
+
+    try:
+        func = int(input(">>> "))
+    except ValueError:
+        print("Invalid input")
+        return None  # Return 'None' to show that the input was invalid
+
+    if func not in range(1, 9):
+        print("Invalid input")
+        return None
+    return func
 
 
 def main():
@@ -158,7 +177,7 @@ def main():
     global ids
 
     names, ranks, divisions, ids = init_database()
-    print(count_officers())
+    print(display_menu())
     print(names, "\n", ranks, "\n", divisions, "\n", ids, sep = "")
 
 main()

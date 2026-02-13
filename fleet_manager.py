@@ -170,14 +170,39 @@ def display_menu():
     return func
 
 
+
 def main():
-    global names
+    global names  # Set these variables to global so other functions can access them
     global ranks
     global divisions
     global ids
 
     names, ranks, divisions, ids = init_database()
-    print(display_menu())
-    print(names, "\n", ranks, "\n", divisions, "\n", ids, sep = "")
+
+
+    while True:
+        func = display_menu()
+
+        match func:
+            case 1:
+                add_member()
+            case 2:
+                remove_member()
+            case 3:
+                update_rank()
+            case 4:
+                display_roster()
+            case 5:
+                search_crew()
+            case 6:
+                filter_by_division()
+            case 7:
+                print(calculate_payroll())
+            case 8:
+                print(count_officers())
+            case None:
+                pass
+
+
 
 main()

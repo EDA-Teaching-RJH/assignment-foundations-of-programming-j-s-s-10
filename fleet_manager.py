@@ -60,9 +60,13 @@ def update_rank():
     ranks[index] = rank
 
 
-def display_roster():
+def display_roster(selection = []):
     print("ID\tName\tRank\t\tDivision")
-    for i in range(len(names)):
+
+    if not selection:  # If 'selection' is empty...
+        selection = range(len(names))  # Sets it to list of indeces spanning the entire data set
+
+    for i in selection:
         print(ids[i], "\t", names[i], "\t", ranks[i], end = "", sep = "")
         if len(ranks[i]) >= 8:
             print("\t", end = "")
@@ -84,6 +88,33 @@ def search_crew():
         print("Search term not found.")
 
 
+def filter_by_division():
+    print("Enter a number\n1 - Command\t2 - Operations\t3 - Sciences")
+    subject = input(">>> ")
+
+    match subject:
+        case "1":
+            div = "Command"
+        case "2":
+            div = "Operations"
+        case "3":
+            div = "Sciences"
+        case _:
+            print("Invalid input")
+            return
+
+    selection = []
+    for i in range(len(names)):
+        if divisions[i] == div:
+            selection.append(i)
+
+    if selection:
+        display_roster(selection)
+    else:
+        print("No matching data.")
+
+
+
 def display_menu():
     name = input("Enter your name: ")
     print("Current user:", name)
@@ -98,7 +129,7 @@ def main():
     global ids
 
     names, ranks, divisions, ids = init_database()
-    search_crew()
+    filter_by_division()
     print(names, "\n", ranks, "\n", divisions, "\n", ids, sep = "")
 
 main()

@@ -30,6 +30,20 @@ def add_member():
     ids.append(new_id)
 
 
+def remove_member():
+    try:
+        target_id = int(input("Enter ID you wish to remove: "))
+        index = ids.index(target_id)
+    except ValueError:
+        print("Invalid ID")
+        return
+
+    names.pop(index)
+    ranks.pop(index)
+    divisions.pop(index)
+    ids.pop(index)
+
+
 def display_menu():
     name = input("Enter your name: ")
     print("Current user:", name)
@@ -44,6 +58,7 @@ def main():
     global ids
 
     names, ranks, divisions, ids = init_database()
+    remove_member()
     print(names, "\n", ranks, "\n", divisions, "\n", ids, sep = "")
 
 main()

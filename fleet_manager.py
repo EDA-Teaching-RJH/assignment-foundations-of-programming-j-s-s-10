@@ -44,6 +44,22 @@ def remove_member():
     ids.pop(index)
 
 
+def update_rank():
+    try:
+        target_id = int(input("Enter ID you wish to update: "))
+        index = ids.index(target_id)
+    except ValueError:
+        print("Invalid ID")
+        return
+
+    rank = input("Enter rank: ")
+    if rank not in ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Junior Lieutenant", "Ensign"]:
+        print("Invalid rank")
+        return
+
+    ranks[index] = rank
+
+
 def display_menu():
     name = input("Enter your name: ")
     print("Current user:", name)
@@ -58,7 +74,7 @@ def main():
     global ids
 
     names, ranks, divisions, ids = init_database()
-    remove_member()
+    update_rank()
     print(names, "\n", ranks, "\n", divisions, "\n", ids, sep = "")
 
 main()

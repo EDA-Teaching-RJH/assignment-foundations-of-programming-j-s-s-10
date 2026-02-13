@@ -77,14 +77,15 @@ def display_roster(selection = []):
 
 def search_crew():
     subject = input("Enter search term: ")
-    found = False
-    
+
+    selection = []
     for i in range(len(names)):
         if subject in names[i]:
-            found = True
-            print(f"{names[i]}, {ranks[i]}, {divisions[i]}, {ids[i]}")
+            selection.append(i)
 
-    if not found:
+    if selection:
+        display_roster(selection)
+    else:
         print("Search term not found.")
 
 
@@ -129,7 +130,7 @@ def main():
     global ids
 
     names, ranks, divisions, ids = init_database()
-    filter_by_division()
+    search_crew()
     print(names, "\n", ranks, "\n", divisions, "\n", ids, sep = "")
 
 main()

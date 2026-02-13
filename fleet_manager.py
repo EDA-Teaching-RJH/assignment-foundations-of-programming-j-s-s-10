@@ -60,6 +60,17 @@ def update_rank():
     ranks[index] = rank
 
 
+def display_roster():
+    print("ID\tName\tRank\t\tDivision")
+    for i in range(len(names)):
+        print(ids[i], "\t", names[i], "\t", ranks[i], end = "", sep = "")
+        if len(ranks[i]) >= 8:
+            print("\t", end = "")
+        else:
+            print("\t\t", end = "")
+        print(divisions[i])
+
+
 def display_menu():
     name = input("Enter your name: ")
     print("Current user:", name)
@@ -74,7 +85,7 @@ def main():
     global ids
 
     names, ranks, divisions, ids = init_database()
-    update_rank()
+    display_roster()
     print(names, "\n", ranks, "\n", divisions, "\n", ids, sep = "")
 
 main()

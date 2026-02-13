@@ -135,6 +135,15 @@ def calculate_payroll():
     return cost
 
 
+def count_officers():
+    count = 0
+    for i in ranks:
+        if i == "Captain" or i == "Commander":
+            count += 1
+
+    return count
+
+
 def display_menu():
     name = input("Enter your name: ")
     print("Current user:", name)
@@ -149,7 +158,7 @@ def main():
     global ids
 
     names, ranks, divisions, ids = init_database()
-    print(calculate_payroll())
+    print(count_officers())
     print(names, "\n", ranks, "\n", divisions, "\n", ids, sep = "")
 
 main()

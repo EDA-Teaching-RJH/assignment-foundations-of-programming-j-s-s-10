@@ -115,6 +115,25 @@ def filter_by_division():
         print("No matching data.")
 
 
+def calculate_payroll():
+    cost = 0
+    for i in ranks:
+        match i:
+            case "Captain":
+                cost += 1000
+            case "Commander":
+                cost += 900
+            case "Lt. Commander":
+                cost += 800
+            case "Lieutenant":
+                cost += 600
+            case "Junior Lieutenant":
+                cost += 500
+            case "Ensign":
+                cost += 200
+
+    return cost
+
 
 def display_menu():
     name = input("Enter your name: ")
@@ -130,7 +149,7 @@ def main():
     global ids
 
     names, ranks, divisions, ids = init_database()
-    search_crew()
+    print(calculate_payroll())
     print(names, "\n", ranks, "\n", divisions, "\n", ids, sep = "")
 
 main()
